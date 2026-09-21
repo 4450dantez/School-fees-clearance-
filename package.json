@@ -2,6 +2,9 @@
   "name": "school-fees-clearance",
   "version": "1.0.0",
   "scripts": {
-    "start": "node index.js"
+    "start": "node server.js"
+  },
+  "dependencies": {
+    "express": "^5.2.1"
   }
 }
