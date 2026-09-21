@@ -1,0 +1,345 @@
+/* =========================================================================
+   SCHOOL FEES CLEARANCE SYSTEM
+   File: style.css
+   Purpose: Visual design — theming (light/dark), typography, layout for
+            the login gate, admin register, and student certificate views.
+   Author: Daniel Muendo (Dantez) — CICT 14413/24
+   ========================================================================= */
+
+  :root {
+    box-sizing: border-box;
+    padding-top: env(safe-area-inset-top, 0px);
+    padding-bottom: env(safe-area-inset-bottom, 0px);
+
+    --paper: #F5F2E8;
+    --paper-raised: #FBF9F2;
+    --ink: #22291F;
+    --ink-soft: #52594B;
+    --register: #2E4A32;
+    --register-deep: #1E3222;
+    --brass: #9C7A2E;
+    --brass-soft: #C9AE71;
+    --rule: #D7D0BB;
+    --rule-strong: #B9AF92;
+    --danger: #8C3B2E;
+    --danger-bg: #F4E4DF;
+    --ok-bg: #E4EBDD;
+  }
+  @media (prefers-color-scheme: dark) {
+    :root:not([data-theme="light"]) {
+      --paper: #191D16;
+      --paper-raised: #21261C;
+      --ink: #EDE9DA;
+      --ink-soft: #B6B29E;
+      --register: #6E9A6E;
+      --register-deep: #8FBB8A;
+      --brass: #D3B36A;
+      --brass-soft: #D3B36A;
+      --rule: #3A4133;
+      --rule-strong: #4B533E;
+      --danger: #E19484;
+      --danger-bg: #3A2620;
+      --ok-bg: #263420;
+    }
+  }
+  :root[data-theme="dark"] {
+    --paper: #191D16;
+    --paper-raised: #21261C;
+    --ink: #EDE9DA;
+    --ink-soft: #B6B29E;
+    --register: #6E9A6E;
+    --register-deep: #8FBB8A;
+    --brass: #D3B36A;
+    --brass-soft: #D3B36A;
+    --rule: #3A4133;
+    --rule-strong: #4B533E;
+    --danger: #E19484;
+    --danger-bg: #3A2620;
+    --ok-bg: #263420;
+  }
+
+  * { box-sizing: border-box; }
+  html { scroll-padding-top: env(safe-area-inset-top, 0px); }
+  html, body { height: 100%; }
+  body {
+    margin: 0;
+    background: var(--paper);
+    color: var(--ink);
+    font-family: 'Inter', -apple-system, sans-serif;
+    -webkit-font-smoothing: antialiased;
+  }
+  h1, h2, h3, .serif { font-family: 'Lora', Georgia, serif; }
+
+  .app {
+    max-width: 640px;
+    margin: 0 auto;
+    min-height: 100%;
+    padding: 20px 18px calc(28px + env(safe-area-inset-bottom, 0px));
+  }
+
+  /* ---------- Letterhead ---------- */
+  .letterhead {
+    border-bottom: 2px solid var(--register);
+    padding-bottom: 14px;
+    margin-bottom: 20px;
+    display: flex;
+    align-items: flex-end;
+    justify-content: space-between;
+    gap: 12px;
+  }
+  .letterhead .crest {
+    width: 42px; height: 42px;
+    border-radius: 50%;
+    background: var(--register);
+    color: var(--paper-raised);
+    display: flex; align-items: center; justify-content: center;
+    font-family: 'Lora', serif;
+    font-weight: 700;
+    font-size: 16px;
+    flex: none;
+  }
+  .letterhead .titles { flex: 1; min-width: 0; }
+  .letterhead h1 {
+    font-size: 17px;
+    margin: 0;
+    line-height: 1.25;
+    letter-spacing: 0.01em;
+  }
+  .letterhead .sub {
+    font-size: 12.5px;
+    color: var(--ink-soft);
+    margin-top: 2px;
+  }
+  .signed-in {
+    font-size: 12px;
+    color: var(--ink-soft);
+    text-align: right;
+    line-height: 1.4;
+  }
+  .signed-in button {
+    background: none; border: none; color: var(--register);
+    font: inherit; font-weight: 600; padding: 0; margin-top: 2px;
+    cursor: pointer; text-decoration: underline;
+    text-underline-offset: 2px;
+  }
+
+  /* ---------- Gate (role choice / login) ---------- */
+  .gate-hero {
+    padding: 10px 2px 22px;
+    border-bottom: 1px solid var(--rule);
+    margin-bottom: 22px;
+  }
+  .gate-hero .kicker { color: var(--register); font-weight: 600; font-size: 13px; }
+  .gate-hero h2 {
+    font-size: 26px;
+    margin: 6px 0 8px;
+    line-height: 1.2;
+    max-width: 22ch;
+  }
+  .gate-hero p { color: var(--ink-soft); font-size: 14.5px; margin: 0; max-width: 40ch; line-height: 1.5; }
+
+  .role-cards { display: grid; gap: 12px; }
+  .role-card {
+    background: var(--paper-raised);
+    border: 1px solid var(--rule);
+    border-radius: 3px;
+    padding: 16px 16px;
+    text-align: left;
+    cursor: pointer;
+    display: flex;
+    align-items: center;
+    gap: 14px;
+    font-family: inherit;
+    color: var(--ink);
+  }
+  .role-card:active { border-color: var(--register); }
+  .role-card .mark {
+    font-family: 'Lora', serif;
+    font-weight: 700;
+    font-size: 15px;
+    width: 34px; height: 34px;
+    border: 1.5px solid var(--register);
+    color: var(--register);
+    border-radius: 50%;
+    display: flex; align-items: center; justify-content: center;
+    flex: none;
+  }
+  .role-card .rt { font-weight: 600; font-size: 15px; }
+  .role-card .rd { font-size: 12.5px; color: var(--ink-soft); margin-top: 2px; }
+
+  form.panel {
+    background: var(--paper-raised);
+    border: 1px solid var(--rule);
+    border-radius: 3px;
+    padding: 18px 16px;
+  }
+  .field { margin-bottom: 14px; }
+  .field:last-child { margin-bottom: 0; }
+  label {
+    display: block;
+    font-size: 12.5px;
+    font-weight: 600;
+    color: var(--ink-soft);
+    margin-bottom: 5px;
+  }
+  input, select {
+    width: 100%;
+    font: inherit;
+    font-size: 15px;
+    padding: 10px 11px;
+    border: 1px solid var(--rule-strong);
+    border-radius: 3px;
+    background: var(--paper);
+    color: var(--ink);
+  }
+  input:focus, select:focus, button:focus-visible, .role-card:focus-visible {
+    outline: 2px solid var(--register);
+    outline-offset: 1px;
+  }
+  .hint { font-size: 12px; color: var(--ink-soft); margin-top: 5px; }
+
+  button.btn {
+    font: inherit;
+    font-weight: 600;
+    font-size: 14.5px;
+    border: none;
+    border-radius: 3px;
+    padding: 11px 16px;
+    cursor: pointer;
+  }
+  .btn-primary { background: var(--register); color: var(--paper-raised); width: 100%; margin-top: 4px; }
+  .btn-secondary { background: transparent; color: var(--register); border: 1px solid var(--register); }
+  .btn-danger { background: transparent; color: var(--danger); border: 1px solid var(--danger); }
+  .btn-ghost { background: transparent; color: var(--ink-soft); border: 1px solid var(--rule-strong); }
+  .btn-row { display: flex; gap: 8px; margin-top: 14px; flex-wrap: wrap; }
+  .btn-row button { flex: 1; min-width: 120px; }
+
+  .error-text { color: var(--danger); font-size: 13px; margin-top: 10px; }
+
+  /* ---------- Section headers ---------- */
+  .section-head {
+    display: flex; align-items: baseline; justify-content: space-between;
+    margin: 26px 0 12px;
+    gap: 10px;
+  }
+  .section-head:first-child { margin-top: 0; }
+  .section-head h3 { font-size: 15.5px; margin: 0; }
+  .section-head .count { font-size: 12.5px; color: var(--ink-soft); }
+
+  /* ---------- Status card (student) ---------- */
+  .status-card {
+    background: var(--paper-raised);
+    border: 1px solid var(--rule);
+    border-radius: 3px;
+    padding: 20px 18px;
+  }
+  .status-card .name { font-size: 19px; font-weight: 600; }
+  .status-card .prog { color: var(--ink-soft); font-size: 13.5px; margin-top: 2px; }
+  .status-badge {
+    display: inline-block;
+    margin-top: 12px;
+    padding: 5px 11px;
+    border-radius: 999px;
+    font-size: 12.5px;
+    font-weight: 700;
+    letter-spacing: 0.01em;
+  }
+  .status-badge.cleared { background: var(--ok-bg); color: var(--register); }
+  .status-badge.pending { background: var(--danger-bg); color: var(--danger); }
+
+  .ledger { margin-top: 18px; border-top: 1px solid var(--rule); padding-top: 14px; }
+  .ledger-row {
+    display: flex; justify-content: space-between; align-items: baseline;
+    padding: 6px 0; font-size: 14.5px;
+  }
+  .ledger-row .l { color: var(--ink-soft); }
+  .ledger-row .v { font-family: 'Lora', serif; font-weight: 600; font-variant-numeric: tabular-nums; }
+  .ledger-row.total { border-top: 1px solid var(--rule); margin-top: 4px; padding-top: 10px; }
+  .ledger-row.total .v { font-size: 17px; }
+  .ledger-row.total .v.owed { color: var(--danger); }
+  .ledger-row.total .v.clear { color: var(--register); }
+
+  /* ---------- Admin table ---------- */
+  .roster { border: 1px solid var(--rule); border-radius: 3px; overflow: hidden; background: var(--paper-raised); }
+  .roster-row {
+    display: grid;
+    grid-template-columns: 1fr auto;
+    gap: 10px;
+    padding: 13px 14px;
+    border-bottom: 1px solid var(--rule);
+    align-items: center;
+  }
+  .roster-row:last-child { border-bottom: none; }
+  .roster-row .rn { font-weight: 600; font-size: 14.5px; }
+  .roster-row .rr { font-size: 12px; color: var(--ink-soft); margin-top: 1px; }
+  .roster-row .bal { text-align: right; font-family: 'Lora', serif; font-weight: 600; font-size: 14px; white-space: nowrap; }
+  .roster-row .bal.owed { color: var(--danger); }
+  .roster-row .bal.clear { color: var(--register); }
+  .roster-row .bal small { display: block; font-family: 'Inter', sans-serif; font-weight: 600; font-size: 10.5px; letter-spacing: 0.02em; margin-top: 1px; }
+  .roster-empty { padding: 28px 16px; text-align: center; color: var(--ink-soft); font-size: 13.5px; }
+
+  .tap-row { width: 100%; text-align: left; background: none; border: none; padding: 0; font: inherit; color: inherit; cursor: pointer; display: contents; }
+
+  /* ---------- Record payment mini panel ---------- */
+  .drawer {
+    background: var(--paper-raised);
+    border: 1px solid var(--register);
+    border-radius: 3px;
+    padding: 16px;
+    margin-top: 10px;
+  }
+  .drawer .dh { display: flex; justify-content: space-between; align-items: baseline; margin-bottom: 10px; }
+  .drawer .dh strong { font-size: 14.5px; }
+  .drawer .dh button { background: none; border: none; color: var(--ink-soft); font: inherit; font-size: 12.5px; cursor: pointer; }
+
+  /* ---------- Certificate ---------- */
+  .certificate {
+    background: var(--paper-raised);
+    border: 2px solid var(--brass);
+    border-radius: 2px;
+    padding: 26px 20px;
+    position: relative;
+  }
+  .certificate::before {
+    content: "";
+    position: absolute; inset: 6px;
+    border: 1px solid var(--brass-soft);
+    pointer-events: none;
+  }
+  .cert-inner { text-align: center; }
+  .cert-inst { font-size: 11px; letter-spacing: 0.05em; color: var(--ink-soft); }
+  .cert-title { font-size: 21px; margin: 10px 0 4px; }
+  .cert-sub { font-size: 12px; color: var(--brass); font-weight: 600; }
+  .cert-body { margin: 22px 0; font-size: 14.5px; line-height: 1.9; color: var(--ink); }
+  .cert-body .fig { font-family: 'Lora', serif; font-weight: 700; }
+  .cert-meta { display: flex; justify-content: space-between; margin-top: 26px; font-size: 12px; color: var(--ink-soft); }
+  .cert-meta .sig { text-align: center; }
+  .cert-meta .sig .line { width: 120px; border-top: 1px solid var(--rule-strong); margin-bottom: 5px; }
+
+  @media print {
+    body * { visibility: hidden; }
+    .certificate, .certificate * { visibility: visible; }
+    .certificate { position: absolute; top: 0; left: 0; width: 100%; border: none; }
+    .certificate::before { border-color: var(--brass); }
+  }
+
+  .toast {
+    position: fixed;
+    left: 50%; bottom: calc(20px + env(safe-area-inset-bottom, 0px));
+    transform: translateX(-50%) translateY(8px);
+    background: var(--register-deep);
+    color: var(--paper-raised);
+    padding: 10px 16px;
+    border-radius: 4px;
+    font-size: 13.5px;
+    font-weight: 500;
+    opacity: 0;
+    pointer-events: none;
+    transition: opacity .2s ease, transform .2s ease;
+    max-width: 90%;
+    text-align: center;
+    z-index: 40;
+  }
+  .toast.show { opacity: 1; transform: translateX(-50%) translateY(0); }
+
+  ::selection { background: var(--brass-soft); color: var(--ink); }
